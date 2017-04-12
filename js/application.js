@@ -197,7 +197,29 @@ $(document).ready(function() {
 		loadImages();
 		disDisplay.innerHTML = pretendDistance( distance( getXY["station"](), getXY["prism"]() ) );
 		angle();
-		//console.log(intervalId);
+		
+		//Scale 
+		context.beginPath();
+		context.fillRect(100,510,10,5);
+		context.fillRect(110,515,10,5);
+		context.fillRect(120,510,10,5);
+		context.fillRect(130,515,10,5);
+		context.fillRect(140,510,10,5);
+		context.fillRect(150,515,50,5);
+		context.fillRect(200,510,50,5);
+		context.fillRect(250,515,100,5);
+		context.setLineDash([0, 0]);
+		context.lineWidth=2;
+		context.strokeStyle="black";
+		context.rect(100,510, 250, 10)
+		context.stroke();
+		context.fillText("-10",85,500);
+		context.fillText("0",145,500);
+		context.fillText("10",190,500);
+		context.fillText("20",242,500);
+		context.fillText("40",340,500);
+		// End of Scale
+
 	}
 
 	// Display custom canvas.
