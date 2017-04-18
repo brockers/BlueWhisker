@@ -51,3 +51,24 @@ button {
 	margin-top: 800px;
 }
 
+
+/* ----------------
+	Finish Button
+----------------  */
+#finish-btn{
+	margin-left: 10px;
+	background-color: green;
+	color:white;
+	letter-spacing: .20em;
+	text-transform: uppercase;
+	font-size: .9em;
+	font-weight: lighter;
+}
+ #time{
+	 margin-left: 10px;
+ }
+ #setStn{
+	 font-size:.7em;
+ }
+ /* end - finish button */
+
