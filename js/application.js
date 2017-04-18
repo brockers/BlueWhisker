@@ -354,5 +354,14 @@ nextQuestionBtn.addEventListener("click", function() {
 
 });
 
+	function degreeToRadians (d){
+		var angle = ( d * (Math.PI/180) );
+		return angle.toFixed(1);
+	}
+
+	function radianToDegrees(r){
+		var angle = ( r * (180/Math.PI) );
+		return angle.toFixed(1);
+	}
 // Show the current active page
 // var activePage = $.mobile.activePage[0].id
