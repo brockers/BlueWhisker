@@ -197,7 +197,34 @@ $(document).ready(function() {
 		loadImages();
 		disDisplay.innerHTML = pretendDistance( distance( getXY["station"](), getXY["prism"]() ) );
 		angle();
-		//console.log(intervalId);
+		
+		//Scale 
+		var scaleLocX = 100 // Use this to move scale location on page horizontally.
+		var scaleLocY = 550 // Use this to adjust Scale location page vertically.
+
+
+		// Do not change anything regarding scale location below this line. 
+		context.beginPath();
+		context.fillRect(scaleLocX , scaleLocY, 10, 5);
+		context.fillRect(scaleLocX + 10, scaleLocY + 5, 10, 5);
+		context.fillRect(scaleLocX + 20, scaleLocY, 10, 5);
+		context.fillRect(scaleLocX + 30, scaleLocY + 5, 10, 5);
+		context.fillRect(scaleLocX + 40, scaleLocY, 10, 5);
+		context.fillRect(scaleLocX + 50, scaleLocY + 5, 50, 5);
+		context.fillRect(scaleLocX + 100, scaleLocY, 50, 5);
+		context.fillRect(scaleLocX + 150, scaleLocY + 5, 100, 5);
+		context.setLineDash([0, 0]);
+		context.lineWidth=2;
+		context.strokeStyle="black";
+		context.rect(scaleLocX, scaleLocY, 250, 10)
+		context.stroke();
+		context.fillText("-5", scaleLocX - 10, scaleLocY - 10);
+		context.fillText("0", scaleLocX + 45, scaleLocY - 10);
+		context.fillText("5", scaleLocX + 95, scaleLocY - 10);
+		context.fillText("10", scaleLocX + 142, scaleLocY - 10);
+		context.fillText("20", scaleLocX + 240, scaleLocY - 10);
+		// End of Scale
+
 	}
 
 	// Display custom canvas.
