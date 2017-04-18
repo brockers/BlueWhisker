@@ -15,8 +15,10 @@
 			$.mobile.pushStateEnabled = false;
 		});
 	</script>
+	<script src="js/reset.js"></script>
 	<script src="js/jquery.mobile-1.4.5.js"></script>
 	<script src="js/application.js"></script>
+
 
 
 	</head>
@@ -46,12 +48,14 @@
 			<div id="controls">
 				<a href="#popUpDiv" data-rel="popup">Instructions</a>
 				<a href="#calculator" data-rel="popup">Calculator</a>
+				<a href="#reset" data-rel="popup">Reset</a>
 				<a id="zeroSet" href="#">Zero Set</a>
 				<span>Distance: <span id="dist">0.0</span></span>
 				<span>Angle: <span id="angle">N/A</span></span>
 				<h5 id="demo"></h5>
 			</div>
 		</div>
+
 
 		<div data-role="popup" id="calculator">
 			<form Name="calc">
@@ -92,6 +96,10 @@
 			</table>
 			</form>
 		</div>
+	<div data-role="popup" id="reset">
+	
+				<button onclick="reset()">Reset</button>
+
 
 		<div data-role="popup" id="popUpDiv">
 			<h2>Instructions</h2>
@@ -123,5 +131,6 @@
 	</div>
 
 	<button id="nextQuestionBtn">Next Question</button>
+	
 </body>
 </html>
