@@ -356,3 +356,11 @@ nextQuestionBtn.addEventListener("click", function() {
 
 // Show the current active page
 // var activePage = $.mobile.activePage[0].id
+
+//Resets the game
+		function reset(){
+   window.location.reload(false);
+   window.location.href="index.html#canvasPage";
+}
+
+
