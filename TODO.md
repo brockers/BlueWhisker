@@ -1,10 +1,17 @@
 ## Task List by Priority
 
 * Fine Tuning Controls (Carson McKinstry)
-* Scale (Kelley Douglass)
-* Timer (Clint Taylor)
-* Level III (Ronel Peter)
-* Finishing Checks (Daniel Kline) - UI Update
-* Set Stakes (Katie Scruggs)
-* UI Update (Tony Karanja)
-* Trig Functions (Jose Orellana Jr?)
+* Level III (Ronel Peter) 
+* Finishing Checks (Daniel Kline) 
+* Set Stakes (Kelly Dougless)
+* UI Update (Kate Allen)
+* Setup server project structure (Max Mayfield)
+* User Sign-up ()
+* Store Game Information to server (Marty Mayfield)
+* User Login
+
+## Completed Stories
+
+* Scale (Kelley Douglass) --Done
+* Timer (Clint Taylor) --Done
+* Trig Functions (Jose Orellana Jr?) --Done
