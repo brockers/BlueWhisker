@@ -421,7 +421,29 @@ nextQuestionBtn.addEventListener("click", function() {
 		}   /* end of timer section */
 		
 
+
+	//--------------
+	// CREATE SET POINT
+	//--------------
+
+/*
+
+1. Make button to set a Set Point wherever Reticle is placed -- button made
+2. put a point and text SP# next to it. 
+3. optional - create a clear set points button.
+
+*/
+
+
+
+
+// END OF CREATE SET POINT
+
+
 });
+
+
+
 
 // Show the current active page
 // var activePage = $.mobile.activePage[0].id
