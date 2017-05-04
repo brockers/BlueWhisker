@@ -38,6 +38,8 @@
 		</div>
 	</div>
 
+<!--Kate ----moved button---->
+
 	<div data-role="page" id="canvasPage">
 		<button id="nextQuestionBtn">Next Question</button><br>
 		<button id="createSetpointBtn">Create set point</button><br>
@@ -46,7 +48,9 @@
 
 			<canvas id="myCanvas"></canvas>
 
-			<div id="controls">
+<!--Kate ----added menu class---->
+        
+			<div class="menu" id="controls">
 				<a href="#popUpDiv" data-rel="popup">Instructions</a>
 				<a href="#calculator" data-rel="popup">Calculator</a>
 				<a id="zeroSet" href="#">Zero Set</a>
@@ -56,6 +60,10 @@
 				<span><b>Your Time:<span id="time">0</span>s</b>
 				<h5 id="demo"></h5>
 			</div>
+ <!--Kate ----moved button here---->
+   
+        <button id="nextQuestionBtn" class="menu">Next Question</button>			
+			
 		</div>
 
 		                <div data-role="popup" id="calculator">
