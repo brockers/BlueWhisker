@@ -191,17 +191,10 @@ $(document).ready(function() {
 		mouse.y = evt.clientY - rect.top;
 	}
 
-	function draw() {
-		clearCanvas();
-		controlPoints();
-		loadImages();
-		disDisplay.innerHTML = pretendDistance( distance( getXY["station"](), getXY["prism"]() ) );
-		angle();
-		
-		//Scale 
+function drawScale() {
+	//Scale 
 		var scaleLocX = 100 // Use this to move scale location on page horizontally.
 		var scaleLocY = 550 // Use this to adjust Scale location page vertically.
-
 
 		// Do not change anything regarding scale location below this line. 
 		context.beginPath();
@@ -224,8 +217,7 @@ $(document).ready(function() {
 		context.fillText("10", scaleLocX + 142, scaleLocY - 10);
 		context.fillText("20", scaleLocX + 240, scaleLocY - 10);
 		// End of Scale
-
-	}
+}
 
 	// Display custom canvas.
 	// In this case it's a blue, 4 pixel border that
@@ -354,35 +346,6 @@ nextQuestionBtn.addEventListener("click", function() {
 	isCorrect();
 })
 
-
-	function initialize() {
-		// the window is resized.
-		resizeCanvas();
-
-		// Add event listener to get out mouse position
-		canvas.addEventListener('mousemove', function(evt) { getMousePos(evt); });
-		// Block text selection on doubleclick
-		canvas.addEventListener('selectstart', function(e) { e.preventDefault(); return false; }, false);
-		// Register an event listener to resize window
-		window.addEventListener('resize', resizeCanvas, false);
-		// Listen for clicking out zeroset button
-		var zeroSet = document.getElementById("zeroSet");
-		zeroSet.addEventListener( 'click', displayZeroSet, true );
-
-		// Add our own mouse events
-		canvas.onmousedown = mDown;
-		canvas.onmouseup = mUp;
-
-		// Draw canvas border for the first time.
-		intervalId = setInterval(draw, 10);
-	}
-
-	// draw canvas.
-	initialize();
-
-
-
-	
 	//--------------
 	// TIMER
 	//--------------
@@ -426,19 +389,112 @@ nextQuestionBtn.addEventListener("click", function() {
 	// CREATE SET POINT
 	//--------------
 
-/*
+		// The Object holding all of the Setpoints created by clicking create set point button.
+		var setPoints = {
+		};
 
-1. Make button to set a Set Point wherever Reticle is placed -- button made
-2. put a point and text SP# next to it. 
-3. optional - create a clear set points button.
+		// This function runs all the time in the draw function 
+		function drawNewSetPoints() {
 
-*/
+			for (var sp in setPoints) {
+				context.beginPath();
+				context.arc(setPoints[sp].x, setPoints[sp].y, 3, 0, 5 * Math.PI);
+				context.label = 'sp';
+				context.fill();
+				context.font = "15px Arial";
+				context.fillText(sp, setPoints[sp].x + 10, setPoints[sp].y);
+			}
+
+		}
+		
+		var createSetPointBtn = document.getElementById('createSetpointBtn');
+
+		var num = 1
+		// watch for button to be clicked to add new set point to setPoints object.
+		createSetPointBtn.addEventListener("click", function () {
+			var prismXY = getXY.prism();
+			var spName = 'SP' + num;
+			setPoints[spName] = { x: prismXY.x, y: prismXY.y };
+			num += 1;	
+
+		});
+
+	// END OF CREATE SET POINT
 
 
 
+	//--------------
+	// CLEAR ALL SET POINTS
+	//--------------
 
-// END OF CREATE SET POINT
+		var clearSetPointsBtn = document.getElementById('clearSetPointsBtn');
 
+		// Button that resets the setPoints object back to empty and resets the SP label numbers also. 
+		clearSetPointsBtn.addEventListener("click", function () {
+			setPoints = {};
+			num = 1;
+		})
+
+		// runs in draw function all the time and updates the drawing if setPoints changes. 
+		function updateSetpoints() {
+			setPoints = setPoints;
+
+		}
+
+	// END OF CLEAR ALL SET POINTS
+
+
+	//--------------
+	// MAIN DRAW FUNCTION
+	//--------------
+
+	// This function reruns and redraws the canvas elements every 10 milliseconds. (Refer in initialize function)
+	function draw() {
+		clearCanvas();
+		controlPoints();
+		loadImages();
+		disDisplay.innerHTML = pretendDistance( distance( getXY["station"](), getXY["prism"]() ) );
+		angle();
+		drawScale();
+		drawNewSetPoints();
+		updateSetpoints();
+
+	}
+
+	// END OF DRAW FUNCTION
+
+
+	//--------------
+	// INITIALIZE FUNCTION
+	//--------------
+
+
+	function initialize() {
+		// the window is resized.
+		resizeCanvas();
+
+		// Add event listener to get out mouse position
+		canvas.addEventListener('mousemove', function(evt) { getMousePos(evt); });
+		// Block text selection on doubleclick
+		canvas.addEventListener('selectstart', function(e) { e.preventDefault(); return false; }, false);
+		// Register an event listener to resize window
+		window.addEventListener('resize', resizeCanvas, false);
+		// Listen for clicking out zeroset button
+		var zeroSet = document.getElementById("zeroSet");
+		zeroSet.addEventListener( 'click', displayZeroSet, true );
+
+		// Add our own mouse events
+		canvas.onmousedown = mDown;
+		canvas.onmouseup = mUp;
+
+		// Draw canvas border for the first time.
+		intervalId = setInterval(draw, 10);
+	}
+
+	// draw canvas.
+	initialize();
+
+	// END OF INITIALIZE FUNCTION
 
 });
 
