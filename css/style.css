@@ -51,6 +51,24 @@ html, body {
 	width: 225px;
 }
 
+#createSetpointBtn {
+	z-index: 50;
+	margin-top: 100px;
+	position: absolute;
+	top: 25px;
+	left: 800px;
+	width: 225px;
+}
+
+#clearSetPointsBtn {
+	z-index: 50;
+	margin-top: 160px;
+	position: absolute;
+	top: 25px;
+	left: 800px;
+	width: 225px;
+}
+
 
 /* ----------------
 	Finish Button
