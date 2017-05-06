@@ -191,8 +191,8 @@ $(document).ready(function() {
 		mouse.y = evt.clientY - rect.top;
 	}
 
-function drawScale() {
-	//Scale 
+	function drawScale() {
+		//Scale 
 		var scaleLocX = 100 // Use this to move scale location on page horizontally.
 		var scaleLocY = 550 // Use this to adjust Scale location page vertically.
 
@@ -217,7 +217,7 @@ function drawScale() {
 		context.fillText("10", scaleLocX + 142, scaleLocY - 10);
 		context.fillText("20", scaleLocX + 240, scaleLocY - 10);
 		// End of Scale
-}
+	}
 
 	// Display custom canvas.
 	// In this case it's a blue, 4 pixel border that
@@ -305,83 +305,83 @@ function drawScale() {
 		zSet.py = pzXY.y;
 	}
 
-// Set initial question set control points
+	// Set initial question set control points
 	var control = {
 		CP1: { x: 200, y: 350 },
 		CP2: { x: 200, y: 80 }
 	};
 
 
-function changetoNextQuestion(arrNum) {
-	//sets the page's active control points to whatever number is passed to arrNum
-	controlArray = [
-		{
-		CP1: { x: 200, y: 350 },
-		CP2: { x: 200, y: 100 },
-		CP3: { x: 450, y: 350 },
-		CP4: {x: 450, y: 100 }
-	},
-		{
-		CP1: { x: 600, y: 250 },
-		CP2: { x: 300, y: 90 },
-		CP3: {x: 100, y: 200}
+	function changetoNextQuestion(arrNum) {
+		//sets the page's active control points to whatever number is passed to arrNum
+		controlArray = [
+			{
+			CP1: { x: 200, y: 350 },
+			CP2: { x: 200, y: 100 },
+			CP3: { x: 450, y: 350 },
+			CP4: {x: 450, y: 100 }
+		},
+			{
+			CP1: { x: 600, y: 250 },
+			CP2: { x: 300, y: 90 },
+			CP3: {x: 100, y: 200}
+		}
+		]
+			control = controlArray[arrNum];
 	}
-	]
-		control = controlArray[arrNum];
-}
 
-var questionNumber = 0
-function isCorrect() {
-	// Runs to change to the next set of control points
-	clearCanvas();
-	if (questionNumber > 0 ) {
-		questionNumber += 1
+	var questionNumber = 0
+	function isCorrect() {
+		// Runs to change to the next set of control points
+		clearCanvas();
+		if (questionNumber > 0 ) {
+			questionNumber += 1
+		}
+		changetoNextQuestion(questionNumber);
 	}
-	changetoNextQuestion(questionNumber);
-}
 
-// Temp button on index.html to test isCorrect function changes control points
-var nextQuestionBtn = document.getElementById('nextQuestionBtn');
-nextQuestionBtn.addEventListener("click", function() {
-	isCorrect();
-})
+	// Temp button on index.html to test isCorrect function changes control points
+	var nextQuestionBtn = document.getElementById('nextQuestionBtn');
+	nextQuestionBtn.addEventListener("click", function() {
+		isCorrect();
+	});
 
 	//--------------
 	// TIMER
 	//--------------
 
-		var startTime;
-		var finishTime;
-		var completionTime;
-		var timeStarted = false;
-	
+	var startTime;
+	var finishTime;
+	var completionTime;
+	var timeStarted = false;
 
-		function startTimer(){
-			if(timeStarted == false){
-				startTime = Date.now();
-				document.getElementById("finish-btn").style.background="red";
-				document.getElementById("finish-btn").innerHTML="finish";
-			}
-			timeStarted = true;
+
+	function startTimer(){
+		if(timeStarted == false){
+			startTime = Date.now();
+			document.getElementById("finish-btn").style.background="red";
+			document.getElementById("finish-btn").innerHTML="finish";
 		}
+		timeStarted = true;
+	}
 		
 
-       /*  STOP TIMER FUNCTION -- Waiting on Stake Point (SP1, SP2, etc) code.
-	   
-	   function stopTimer(){
-            finishTime = Date.now();
-            completionTime = (finishTime - startTime) / 1000;
-            document.getElementById("time").innerHTML = " " + completionTime + " ";
-        } */
+   /*  STOP TIMER FUNCTION -- Waiting on Stake Point (SP1, SP2, etc) code.
+ 
+ function stopTimer(){
+        finishTime = Date.now();
+        completionTime = (finishTime - startTime) / 1000;
+        document.getElementById("time").innerHTML = " " + completionTime + " ";
+    } */
 
-		document.getElementById("finish-btn").onclick = function () {
-			if(this.innerHTML === "finish"){
-				finishTime = Date.now();
-				completionTime = (finishTime - startTime) / 1000;
-				document.getElementById("time").innerHTML = " " + completionTime + " ";
-				this.style.display = "none";
-			}
-		}   /* end of timer section */
+	document.getElementById("finish-btn").onclick = function () {
+		if(this.innerHTML === "finish"){
+			finishTime = Date.now();
+			completionTime = (finishTime - startTime) / 1000;
+			document.getElementById("time").innerHTML = " " + completionTime + " ";
+			this.style.display = "none";
+		}
+	}   /* end of timer section */
 		
 
 
@@ -389,35 +389,35 @@ nextQuestionBtn.addEventListener("click", function() {
 	// CREATE SET POINT
 	//--------------
 
-		// The Object holding all of the Setpoints created by clicking create set point button.
-		var setPoints = {
-		};
+	// The Object holding all of the Setpoints created by clicking create set point button.
+	var setPoints = {
+	};
 
-		// This function runs all the time in the draw function 
-		function drawNewSetPoints() {
+	// This function runs all the time in the draw function 
+	function drawNewSetPoints() {
 
-			for (var sp in setPoints) {
-				context.beginPath();
-				context.arc(setPoints[sp].x, setPoints[sp].y, 3, 0, 5 * Math.PI);
-				context.label = 'sp';
-				context.fill();
-				context.font = "15px Arial";
-				context.fillText(sp, setPoints[sp].x + 10, setPoints[sp].y);
-			}
-
+		for (var sp in setPoints) {
+			context.beginPath();
+			context.arc(setPoints[sp].x, setPoints[sp].y, 3, 0, 5 * Math.PI);
+			context.label = 'sp';
+			context.fill();
+			context.font = "15px Arial";
+			context.fillText(sp, setPoints[sp].x + 10, setPoints[sp].y);
 		}
-		
-		var createSetPointBtn = document.getElementById('createSetpointBtn');
 
-		var num = 1
-		// watch for button to be clicked to add new set point to setPoints object.
-		createSetPointBtn.addEventListener("click", function () {
-			var prismXY = getXY.prism();
-			var spName = 'SP' + num;
-			setPoints[spName] = { x: prismXY.x, y: prismXY.y };
-			num += 1;	
+	}
 
-		});
+	var createSetPointBtn = document.getElementById('createSetpointBtn');
+
+	var num = 1
+	// watch for button to be clicked to add new set point to setPoints object.
+	createSetPointBtn.addEventListener("click", function () {
+		var prismXY = getXY.prism();
+		var spName = 'SP' + num;
+		setPoints[spName] = { x: prismXY.x, y: prismXY.y };
+		num += 1;	
+
+	});
 
 	// END OF CREATE SET POINT
 
@@ -458,7 +458,6 @@ nextQuestionBtn.addEventListener("click", function() {
 		drawScale();
 		drawNewSetPoints();
 		updateSetpoints();
-
 	}
 
 	// END OF DRAW FUNCTION
@@ -467,8 +466,6 @@ nextQuestionBtn.addEventListener("click", function() {
 	//--------------
 	// INITIALIZE FUNCTION
 	//--------------
-
-
 	function initialize() {
 		// the window is resized.
 		resizeCanvas();
@@ -495,21 +492,17 @@ nextQuestionBtn.addEventListener("click", function() {
 	initialize();
 
 	// END OF INITIALIZE FUNCTION
-
 });
-
-
-
 
 // Show the current active page
 // var activePage = $.mobile.activePage[0].id
 
- function degreeToRadians (d){
-                var angle = ( d * (Math.PI/180) );
-                return angle.toFixed(1);
-        }
+function degreeToRadians (d){
+	var angle = ( d * (Math.PI/180) );
+	return angle.toFixed(1);
+}
 
-        function radianToDegrees(r){
-                var angle = ( r * (180/Math.PI) );
-                return angle.toFixed(1);
-        }
+function radianToDegrees(r){
+	var angle = ( r * (180/Math.PI) );
+	return angle.toFixed(1);
+}
