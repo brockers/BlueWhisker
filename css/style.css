@@ -4,6 +4,14 @@ html, body {
 	height: 100%;
 }
 
+/*-----Kate ------*/
+a:link {
+    color: black;
+    text-decoration: none;
+    }
+a:hover {
+    text-decoration: underline;
+}
 
 #myCanvas {
 	background: #FFFFFF;
@@ -18,6 +26,29 @@ html, body {
 	z-index:1;
 }
 
+/* ----Kate------*/
+.menu {
+    text-align: center;
+    float: right;
+    position: absolute;
+    width: 25%;
+    top: 30px;
+    right: 30px;
+    z-index: 50;
+    
+  text-decoration: none;
+  background-color: ####F1F1F1;
+  color: #333333;
+  padding: 2px 6px 1px 6px;
+  /*border: 1px solid #CCCCCC;*/
+}
+
+
+
+/*------Kate------*/
+
+
+/*
 #controls {
 	bottom: 30;
 	left: 30;
@@ -25,6 +56,7 @@ html, body {
 	width: 100%;
 	z-index:2;
 }
+*/
 
 /*
 /* styling for 'Instuctions' menu 
@@ -42,13 +74,15 @@ html, body {
 	padding-left: 12px;
 }
 
+/*------Kate- button included in menu-------*/
+
 #nextQuestionBtn {
-	z-index: 50;
-	margin-top: 40px;
+	/*z-index: 51;
 	position: absolute;
 	top: 25px;
 	left: 800px;
 	width: 225px;
+    */
 }
 
 #createSetpointBtn {
@@ -82,6 +116,8 @@ html, body {
 	font-size: .9em;
 	font-weight: lighter;
 }
+
+
  #time{
 	 margin-left: 10px;
  }
@@ -89,4 +125,3 @@ html, body {
 	 font-size:.7em;
  }
  /* end - finish button */
-
