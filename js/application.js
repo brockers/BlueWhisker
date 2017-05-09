@@ -539,6 +539,17 @@ $(document).ready(function() {
 	initialize();
 
 	// END OF INITIALIZE FUNCTION
+
+//reset
+var resetBtn = document.getElementById('resetBtn');
+
+resetBtn.addEventListener("click", function () {
+	console.log("test button");
+    window.location.reload(false);
+})
+
+
+
 });
 
 // Show the current active page
@@ -553,3 +564,5 @@ function radianToDegrees(r){
 	var angle = ( r * (180/Math.PI) );
 	return angle.toFixed(1);
 }
+
+		
