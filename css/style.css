@@ -69,6 +69,15 @@ html, body {
 	width: 225px;
 }
 
+#resetBtn {
+	z-index: 50;
+	margin-top: 220px;
+	position: absolute;
+	top: 25px;
+	left: 800px;
+	width: 225px;
+}
+
 
 /* ----------------
 	Finish Button
