@@ -8,7 +8,8 @@ $(document).ready(function() {
 	var disDisplay = document.getElementById("dist");
 	var angDisplay = document.getElementById("angle");
 
-	var instructionCheckoffCounter = 1;
+
+
 	// var checkoffItemsDone = {
 	// 	setUpCtrlPnt1 : false,
 	// 	useCtrlPnt2AsBackSight : false,
@@ -23,6 +24,24 @@ $(document).ready(function() {
 	var isZSetActive = false;
 	var mouse = { xOff: 0, yOff: 0 };
 	var intervalId = 0;
+	
+	var instructionCheckoffCounter = 0;
+	var lastAngle = 0;	
+	var lastDistance;
+	var exercises = {
+		p1: {
+			ex1: {
+				station: {x:200, y:350}
+				},
+			ex2: {
+				prism: {x:200, y:80}
+				},
+			
+			ex3: {
+				//doesn't need parameters to be specified here, taskController function takes care of it. 
+				}
+			}
+		};
 
 	// Our image resources
 	var imgSize = {x: 46, y: 46};
@@ -109,7 +128,7 @@ $(document).ready(function() {
 			let AC = Math.pow(C.x - A.x, 2) + Math.pow(C.y - A.y, 2);
 
 			let angle = convertDDToDMS(radianToDegrees(Math.acos((BC + AB - AC)/(2 * Math.sqrt(BC) * Math.sqrt(AB)))));
-
+			lastAngle = angle.deg;
 			// console.log(angle);
 
 			angDisplay.innerHTML = `${angle.deg}&deg; ${angle.minutes}' ${angle.seconds}"`
@@ -149,8 +168,9 @@ $(document).ready(function() {
 	}
 
 	function displayCheckedOffItem() {
-		// this function places a checkmark off of each item in the instructions menu as each are done
-		switch (instructionCheckoffCounter) {
+	
+	
+		/*switch (instructionCheckoffCounter) {
 			case 1:
 				document.getElementById('checkoff1').innerHTML = 'done';
 				console.log(document.getElementById('demo').innerHTML = 'got first point');
@@ -174,11 +194,65 @@ $(document).ready(function() {
 			default:
 				// the other conditions were not met, therefore break (out a little break dance)
 				break;
+	var exercises = {
+		p1: {
+			ex1: {
+				station: {x:200, y:350}
+				}
+			}
 		}
+		}*/
+	}
+	
+	function taskController(){
+	switch (instructionCheckoffCounter) {
+
+	case 0:	
+	if((getXY.station().x)==exercises.p1.ex1.station.x && (getXY.station().y)==exercises.p1.ex1.station.y)
+	{
+	document.getElementById('checkoff1').innerHTML = 'done!';
+	instructionCheckoffCounter++;
+	}
+	break;
+
+	case 1:
+	if((getXY.prism().x)==exercises.p1.ex2.prism.x && (getXY.prism().y)==exercises.p1.ex2.prism.y)
+	{
+	document.getElementById('checkoff2').innerHTML = 'done!';
+	instructionCheckoffCounter++;
+	}	
+	break;	
+
+	case 2:
+	if(lastAngle==90 && lastDistance==25)
+	{
+	document.getElementById('checkoff3').innerHTML = 'done!';
+	}
+	break;
+
+	default:
+	break;	
+	}
+	
+	/*if (isFirstMovement){
+	lastMovement.station.x = x2;
+	lastMovement.station.y = y2;
+	lastMovement.prism.x = x1;
+	lastMovement.prism.y = y1;
+	isFirstMovement = false;
+	}
+	else{
+	lastMovement.station.x = getXY.station().x;
+	lastMovement.station.y = getXY.station().y;
+	lastMovement.prism.x = getXY.prism().x;
+	lastMovement.prism.y = getXY.prism().y;
+	}
+	*/
 	}
 
 	function mUp(){
-		// console.log("Mouse has been released at " + mouse.x + ", " + mouse.y);
+		taskController();
+		//console.log("Mouse has been released at " + mouse.x + ", " + mouse.y);
 		isDrag = false;
 		canvas.onmousemove = null;
 		mSelect = null;
@@ -239,6 +313,8 @@ $(document).ready(function() {
 		var dy = dpXY.y - dsXY.y;
 
 		var d = Math.sqrt((dx*dx) + (dy*dy));
+		lastDistance = (d.toFixed(0)).toString();
+		lastDistance = parseInt(lastDistance.slice(0,2));
 		return d.toFixed(0);
 	}
 
