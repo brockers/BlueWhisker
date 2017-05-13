@@ -1,25 +1,23 @@
 <html>
 <head>
-<link rel="icon" href="images/SymbolOfSurveyingTotalStation.png" type="image/x-icon">
-<title></title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Style Sheets -->
-	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css"></script>
-	<link rel="stylesheet" href="css/style.css"></script>
-	<!-- JavaScript  -->
-	<script src="js/jquery-2.1.1.js"></script>
-	<script>
-		// Fix for Chrome file:// source update
-		$(document).bind('mobileinit',function(){
-			$.mobile.pushStateEnabled = false;
-		});
-	</script>
-	<script src="js/jquery.mobile-1.4.5.js"></script>
-	<script src="js/application.js"></script>
-
-
-	</head>
+    <link rel="icon" href="images/SymbolOfSurveyingTotalStation.png" type="image/x-icon">
+    <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Style Sheets -->
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css"></script>
+        <link rel="stylesheet" href="css/style.css"></script>
+        <!-- JavaScript  -->
+        <script src="js/jquery-2.1.1.js"></script>
+        <script>
+            // Fix for Chrome file:// source update
+            $(document).bind('mobileinit',function(){
+                $.mobile.pushStateEnabled = false;
+            });
+        </script>
+        <script src="js/jquery.mobile-1.4.5.js"></script>
+        <script src="js/application.js"></script>
+</head>
 
 <body>
 	<div data-role="page" id="home">
@@ -28,45 +26,42 @@
 		</div>
 		<div data-role="main" class="ui-content" align="center">
 			<h2>Key:</h2>
-			<img src="images/SymbolOfSurveyingTotalStation.png" height="40px" width="40px">This is your Total Station.</img>
-			</br></br>
-			<img src="images/Prism.png" height="40px" width="40px">This is your Prism.</img>
-			</br></br>
+			<img src="images/SymbolOfSurveyingTotalStation.png" height="40px" width="40px">This is your Total Station
+			<br>
+			<img src="images/Prism.png" height="40px" width="40px">This is your Prism.
+			<br>
 			<h4>Drag and drop the tools to use!</h4>
-			</br></br>
+			<br>
 			<a href="#canvasPage" data-role="button">PLAY</a>
 		</div>
 	</div>
 
-<!--Kate ----moved button---->
-
 	<div data-role="page" id="canvasPage">
-		<button id="nextQuestionBtn">Next Question</button><br>
-		<button id="createSetpointBtn">Create set point</button><br>
-		<button id="clearSetPointsBtn">Clear All Set Points</button>
-		<div data-role="main" class="ui-content">
+    <!-- EITHER MENU DOESN'T SHOW OR IT BREAKS EVERYTHING-->
+           <!--Buttons disappeared-->
+        <div id="menu">
+            <button><a href="#popUpDiv" data-rel="popup">Instructions</a></button>
+          <button id="createSetpointBtn">Create set point</button>
+          <button id="clearSetPointsBtn">Clear All Set Points</button>
+          <button id="popcalc"><a href="#calculator" data-rel="popup">Calculator</a></button>
+          <button><a id="zeroSet" href="#">Zero Set</a></button>        
+            <button id="nextQuestionBtn">Next Question</button><br> 
+        </div>
+        <div data-role="main" class="ui-content">
+
+            
+            <button id="nextQuestionBtn">Next Question</button><br>
+        </div>
 
 			<canvas id="myCanvas"></canvas>
 
-<!--Kate ----added menu class---->
-        
-			<div class="menu" id="controls">
-				<p><a href="#popUpDiv" data-rel="popup">Instructions</a></p>
-				<p><a href="#calculator" data-rel="popup">Calculator</a></p>
-				<p><a id="zeroSet" href="#">Zero Set</a></p>
+			<div id="controls">
+                <p><span><b>Your Time:<span id="time">0</span>s</b></span></p>
+				<button class="ui-btn ui-btn-inline" id="finish-btn">Set Station</button>
                 <p><span>Distance: <span id="dist">0.0</span></span></p>
-                <p><span>
-				Angle: <span id="angle">N/A</span></span></p>
-				<p><span><b>Your Time:<span id="time">0</span>s</b></p>
-				<h5 id="demo"></h5>
- <!--Kate ----next button ---->
-                <p>
-				<button id="nextQuestionBtn">Next Question</button>
-				</p>
-<!--Kate ---- start button---->
-				<p><button class="ui-btn ui-btn-inline" id="finish-btn">Start </br><span id="setStn">(set Station)</span> </button></p>			
+                <p><span>Angle: <span id="angle">N/A</span></span></p>
+                <h5 id="demo"></h5>
 			</div>
-			
 		</div>
 
 		                <div data-role="popup" id="calculator">
