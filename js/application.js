@@ -415,7 +415,10 @@ $(document).ready(function() {
 		var prismXY = getXY.prism();
 		var spName = 'SP' + num;
 		setPoints[spName] = { x: prismXY.x, y: prismXY.y };
+		//the following line allows snapping to the new created SetPoints: 
+                control[spName] = {"x": prismXY.x, "y": prismXY.y};
 		num += 1;	
+
 
 	});
 
