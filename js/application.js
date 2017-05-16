@@ -315,14 +315,14 @@ $(document).ready(function() {
 	function changetoNextQuestion(arrNum) {
 		//sets the page's active control points to whatever number is passed to arrNum
 		controlArray = [
-			{
-			CP1: { x: 200, y: 350 },
+			{   
+			CP1: { x: 200, y: 350 },  //question 2 control points
 			CP2: { x: 200, y: 100 },
 			CP3: { x: 450, y: 350 },
 			CP4: {x: 450, y: 100 }
 		},
 			{
-			CP1: { x: 600, y: 250 },
+			CP1: { x: 600, y: 250 },  //question 3 control points
 			CP2: { x: 300, y: 90 },
 			CP3: {x: 100, y: 200}
 		}
@@ -330,21 +330,57 @@ $(document).ready(function() {
 			control = controlArray[arrNum];
 	}
 
+
+//-----------------
+// Next Question Set
+//-----------------
+
 	var questionNumber = 0
-	function isCorrect() {
+	function cleanSet() {
 		// Runs to change to the next set of control points
 		clearCanvas();
-		if (questionNumber > 0 ) {
-			questionNumber += 1
-		}
+				
 		changetoNextQuestion(questionNumber);
+		questionNumber += 1;
+		isCorrect = false;
+		num = 1;
 	}
 
 	// Temp button on index.html to test isCorrect function changes control points
 	var nextQuestionBtn = document.getElementById('nextQuestionBtn');
 	nextQuestionBtn.addEventListener("click", function() {
-		isCorrect();
+		cleanSet();
+		resetTimer();
 	});
+
+
+
+
+	//------------------
+	// Question - Answer Key and answerCheck function Array
+	//------------------
+
+    var isCorrect = false;
+
+	var isQ1Correct =function (){
+		if(disDisplay.textContent === "25.00" && num === 2){
+			isCorrect = true;
+		}
+	}
+
+	var isQ2Correct =function (){
+		if(disDisplay.textContent === "35.40" && num === 3){
+			isCorrect = true;
+		}
+	}
+
+	var answerCheck = [isQ1Correct, isQ2Correct];
+
+	/*end of question-answer key */
+
+
+
+
 
 	//--------------
 	// TIMER
@@ -365,24 +401,34 @@ $(document).ready(function() {
 		timeStarted = true;
 	}
 		
-
-   /*  STOP TIMER FUNCTION -- Waiting on Stake Point (SP1, SP2, etc) code.
- 
- function stopTimer(){
-        finishTime = Date.now();
-        completionTime = (finishTime - startTime) / 1000;
-        document.getElementById("time").innerHTML = " " + completionTime + " ";
-    } */
-
 	document.getElementById("finish-btn").onclick = function () {
-		if(this.innerHTML === "finish"){
+		var answerTest = false;
+		for(i=0; i<answerCheck.length; i++){
+			if(questionNumber == i){
+				answerCheck[i]();
+				answerTest = true;
+			} 
+		}
+			if(this.innerHTML === "finish" &&  isCorrect){
 			finishTime = Date.now();
 			completionTime = (finishTime - startTime) / 1000;
 			document.getElementById("time").innerHTML = " " + completionTime + " ";
 			this.style.display = "none";
 		}
-	}   /* end of timer section */
+	}   
+	
+	function resetTimer(){
+		document.getElementById("finish-btn").style.background="green";
+		document.getElementById("finish-btn").innerHTML="Start </br><span id=\"setStn\">(set Station)</span>";
+		document.getElementById("finish-btn").style.display = "inline";
+		document.getElementById("time").innerHTML = " " + "0" + " ";
+		timeStarted = false;
+	}
+	
+	/* end of timer section */
 		
+
+
 
 
 	//--------------
@@ -416,6 +462,7 @@ $(document).ready(function() {
 		var spName = 'SP' + num;
 		setPoints[spName] = { x: prismXY.x, y: prismXY.y };
 		num += 1;	
+		
 
 	});
 
