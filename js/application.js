@@ -137,9 +137,27 @@ $(document).ready(function() {
 		}
 	}
 
-	function radianToDegrees(r){
-		var angle = ( r * (180/3.14159) );
+	function degreeToRadians (d){
+		var angle = ( d * (Math.PI/180) );
+		console.log("A function has been converted!");
 		return angle.toFixed(1);
+	}
+
+	function radianToDegrees(r){
+		var angle = ( r * (180/Math.PI) );
+		return angle.toFixed(1);
+	}
+
+	function calculateSin(s){
+	var res = Math.sin(degreeToRadians(s));
+	var calcDisplay = document.getElementById('display');
+	calcDisplay.value = res;
+	}
+
+	function calculateCos(c){
+	var res = Math.cos(degreeToRadians(c));
+	var calcDisplay = document.getElementById('display');
+	calcDisplay.value = res;
 	}
 
 	function isOverImage(sName){
@@ -167,42 +185,6 @@ $(document).ready(function() {
 		}
 	}
 
-	function displayCheckedOffItem() {
-	
-	
-		/*switch (instructionCheckoffCounter) {
-			case 1:
-				document.getElementById('checkoff1').innerHTML = 'done';
-				console.log(document.getElementById('demo').innerHTML = 'got first point');
-				instructionCheckoffCounter++;
-				break;
-			case 2:
-				document.getElementById('checkoff2').innerHTML = 'done';
-				console.log(document.getElementById('demo').innerHTML = 'got second point');
-				instructionCheckoffCounter++;
-				break;
-			case 3:
-				document.getElementById('checkoff3').innerHTML = 'done';
-				console.log(document.getElementById('demo').innerHTML = 'got third point');
-				instructionCheckoffCounter++;
-				break;
-			case 4:
-				document.getElementById('checkoff4').innerHTML = 'done';
-				console.log(document.getElementById('demo').innerHTML = 'got fourth point');
-				instructionCheckoffCounter++;
-				break;
-			default:
-				// the other conditions were not met, therefore break (out a little break dance)
-				break;
-	var exercises = {
-		p1: {
-			ex1: {
-				station: {x:200, y:350}
-				}
-			}
-		}
-		}*/
-	}
 	
 	function taskController(){
 	switch (instructionCheckoffCounter) {
@@ -233,21 +215,7 @@ $(document).ready(function() {
 	default:
 	break;	
 	}
-	
-	/*if (isFirstMovement){
-	lastMovement.station.x = x2;
-	lastMovement.station.y = y2;
-	lastMovement.prism.x = x1;
-	lastMovement.prism.y = y1;
-	isFirstMovement = false;
-	}
-	else{
-	lastMovement.station.x = getXY.station().x;
-	lastMovement.station.y = getXY.station().y;
-	lastMovement.prism.x = getXY.prism().x;
-	lastMovement.prism.y = getXY.prism().y;
-	}
-	*/
+
 	}
 
 	function mUp(){
@@ -624,21 +592,22 @@ resetBtn.addEventListener("click", function () {
     window.location.reload(false);
 })
 
+	var btnSin = document.getElementById('btnSin');
+		btnSin.addEventListener("click", function() {
+		var n = document.forms[0].elements[0].value;
+		calculateSin(n);			
+		});
 
+	var btnCos = document.getElementById('btnCos');
+		btnCos.addEventListener("click", function() {
+		var n = document.forms[0].elements[0].value;
+		calculateCos(n);
+		});
 
 });
 
 // Show the current active page
 // var activePage = $.mobile.activePage[0].id
 
-function degreeToRadians (d){
-	var angle = ( d * (Math.PI/180) );
-	return angle.toFixed(1);
-}
-
-function radianToDegrees(r){
-	var angle = ( r * (180/Math.PI) );
-	return angle.toFixed(1);
-}
 
 		
