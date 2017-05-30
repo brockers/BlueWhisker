@@ -224,7 +224,6 @@ $(document).ready(function() {
 		isDrag = false;
 		canvas.onmousemove = null;
 		mSelect = null;
-		displayCheckedOffItem();
 	}
 
 	function getMousePos(evt) {
