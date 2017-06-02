@@ -1,0 +1,102 @@
+ /* Mock CSS file */
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+
+#myCanvas {
+	background: #FFFFFF;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index:1;
+}
+
+#controls {
+	margin-top:400px;
+	bottom: 30;
+	left: 30;
+	position: absolute;
+	width: 100%;
+	z-index:2;
+}
+
+/*
+/* styling for 'Instuctions' menu 
+*/
+#popUpDiv h2 {
+	padding-top: 6px;
+	line-height: .4em;
+}
+#popUpDiv p {
+	line-height: .6em;
+}
+#popUpDiv h2,
+#popUpDiv p {
+	margin-left: 0 !important;
+	padding-left: 12px;
+}
+
+#nextQuestionBtn {
+	z-index: 50;
+	margin-top: 40px;
+	position: absolute;
+	top: 25px;
+	left: 800px;
+	width: 225px;
+}
+
+#createSetpointBtn {
+	z-index: 50;
+	margin-top: 100px;
+	position: absolute;
+	top: 25px;
+	left: 800px;
+	width: 225px;
+}
+
+#clearSetPointsBtn {
+	z-index: 50;
+	margin-top: 160px;
+	position: absolute;
+	top: 25px;
+	left: 800px;
+	width: 225px;
+}
+
+#resetBtn {
+	z-index: 50;
+	margin-top: 220px;
+	position: absolute;
+	top: 25px;
+	left: 800px;
+	width: 225px;
+}
+
+
+/* ----------------
+	Finish Button
+----------------  */
+#finish-btn{
+	margin-left: 10px;
+	background-color: green;
+	color:white;
+	letter-spacing: .20em;
+	text-transform: uppercase;
+	font-size: .9em;
+	font-weight: lighter;
+}
+ #time{
+	 margin-left: 10px;
+ }
+ #setStn{
+	 font-size:.7em;
+ }
+ /* end - finish button */
+
