@@ -88,22 +88,35 @@ $(document).ready(function() {
 
 	function snapToPoint(point){
 		var _buf = 15;
-		for(var _cp in control){
+
+		// Snaps to control points
+		for(var _cp in  control ){
 			if( isOverImage(mSelect) ){
-				 if( distance(control[_cp],point) <= _buf ) {
+		if( distance(control[_cp],point) <= _buf ) {
 					startTimer();
 					return getTopLeft[mSelect]({ x: control[_cp].x, y: control[_cp].y});
 				}
 			}
 		}
+
+		// Snaps to Setpoints
+		for(var _cp in  setPoints ){
+			if( isOverImage(mSelect) ){
+				if( distance(setPoints[_cp],point) <= _buf ) {
+					return getTopLeft[mSelect]({ x: setPoints[_cp].x, y: setPoints[_cp].y});
+				}
+			}
+		}
+
 		return {x: (mouse.x - mouse.xOff), y: (mouse.y - mouse.yOff)};
 	}
 
 	function mMove(e){
 		if(isDrag){
-			var sCor = snapToPoint( getXY[mSelect]() );
+			var sCor = snapToPoint( getXY[mSelect]() )
 			sources[mSelect].x = sCor.x;
 			sources[mSelect].y = sCor.y;
+
 		}
 	}
 
