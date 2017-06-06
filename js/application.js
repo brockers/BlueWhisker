@@ -77,6 +77,16 @@ $(document).ready(function() {
 				}
 			}
 		}
+		
+		for(var _sp in setPoints)
+			if(isOverImage(mSelect)){
+				if( distance(setPoints[_sp],point) <= _buf) {
+				startTimer();
+				return getTopLeft[mSelect]({x: setPoints[_sp].x, y: setPoints[_sp].y});
+				}
+			}
+	
+		
 		return {x: (mouse.x - mouse.xOff), y: (mouse.y - mouse.yOff)};
 	}
 
@@ -415,8 +425,6 @@ $(document).ready(function() {
 		var prismXY = getXY.prism();
 		var spName = 'SP' + num;
 		setPoints[spName] = { x: prismXY.x, y: prismXY.y };
-		//the following line allows snapping to the new created SetPoints: 
-                control[spName] = {"x": prismXY.x, "y": prismXY.y};
 		num += 1;	
 
 
