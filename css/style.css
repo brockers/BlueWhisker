@@ -1,24 +1,34 @@
- /* Mock CSS file */
+/* Mock CSS file */
 html, body {
 	width: 100%;
 	height: 100%;
 }
 
+body {
+        background: #FFFFFF;
+
+}
 
 #myCanvas {
-	background: #FFFFFF;
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	width: 100%;
-	height: 100%;
-	z-index:1;
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 75vw;
+    height: 80vh;
+    z-index: 1;
+    
+}
+
+#menu {
+    display: inline-block;
+    float: right;
+    height: 80vh;
+    width: 25vw;
+    z-index: 50; 
 }
 
 #controls {
+    background: #FFFFFF;
 	bottom: 30;
 	left: 30;
 	position: absolute;
@@ -42,42 +52,6 @@ html, body {
 	padding-left: 12px;
 }
 
-#nextQuestionBtn {
-	z-index: 50;
-	margin-top: 40px;
-	position: absolute;
-	top: 25px;
-	left: 800px;
-	width: 225px;
-}
-
-#createSetpointBtn {
-	z-index: 50;
-	margin-top: 100px;
-	position: absolute;
-	top: 25px;
-	left: 800px;
-	width: 225px;
-}
-
-#clearSetPointsBtn {
-	z-index: 50;
-	margin-top: 160px;
-	position: absolute;
-	top: 25px;
-	left: 800px;
-	width: 225px;
-}
-
-#resetBtn {
-	z-index: 50;
-	margin-top: 220px;
-	position: absolute;
-	top: 25px;
-	left: 800px;
-	width: 225px;
-}
-
 
 /* ----------------
 	Finish Button
@@ -98,4 +72,3 @@ html, body {
 	 font-size:.7em;
  }
  /* end - finish button */
-
